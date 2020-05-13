@@ -1,15 +1,23 @@
-import {
-  dbCred
-} from "../credentials.mjs";
+// import {
+//   dbCred
+// } from "../credentials.mjs";
 import mongodb from "mongodb";
 import mongoose from 'mongoose';
 
+// const uri =
+//   "mongodb+srv://" +
+//   dbCred.username +
+//   ":" +
+//   dbCred.password +
+//   "@cluster0-2jjgt.gcp.mongodb.net/test?retryWrites=true&w=majority";
+
 const uri =
   "mongodb+srv://" +
-  dbCred.username +
+  process.env.DB_USER +
   ":" +
-  dbCred.password +
+  process.env.DB_PASSWORD +
   "@cluster0-2jjgt.gcp.mongodb.net/test?retryWrites=true&w=majority";
+
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

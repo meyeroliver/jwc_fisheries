@@ -1,6 +1,6 @@
 import passport from "passport";
 import GoogleStrategy from "passport-google-oauth20";
-import { googleCredentials } from "../credentials.mjs";
+//import { googleCredentials } from "../credentials.mjs";
 
 import { User } from "../models/user.mjs";
 
@@ -18,8 +18,8 @@ passport.use(
   new GoogleStrategy(
     {
       callbackURL: "/auth/google/redirect",
-      clientID: googleCredentials.clientID,
-      clientSecret: googleCredentials.clientSecret,
+      clientID: process.env.GOOGLE_CLIENT_ID /* googleCredentials.clientID */,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET/*  googleCredentials.clientSecret */,
     },
     (accessToken, refreshToken, profile, done) => {
       //check if user exists in database

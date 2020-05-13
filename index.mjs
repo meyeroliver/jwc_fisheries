@@ -7,9 +7,10 @@ import passportSetup from "./services/passport_setup.mjs";
 import userController from "./controllers/user_controller.mjs";
 import productController from "./controllers/product_controller.mjs";
 import authController from "./controllers/auth_controller.mjs";
-import {
-  sessionCredentials
-} from "./credentials.mjs";
+
+// import {
+//   sessionCredentials
+// } from "./credentials.mjs";
 
 import dbConn from "./services/mongo_db.mjs";
 
@@ -26,7 +27,7 @@ app.use(
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [sessionCredentials.cookieKey]
+  keys: [process.env.COOKEY_KEY/* sessionCredentials.cookieKey */]
 }));
 
 /**
